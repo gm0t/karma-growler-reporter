@@ -12,7 +12,7 @@ The easiest way is to keep `karma-growler-reporter` as a devDependency in your `
 {
   "devDependencies": {
     "karma": "~0.10",
-    "karma-growl-reporter": "~0.1"
+    "karma-growler-reporter": "~0.1"
   }
 }
 ```
@@ -21,7 +21,6 @@ You can simple do it by:
 ```bash
 npm install karma-growler-reporter --save-dev
 ```
-
 
 ###
 
