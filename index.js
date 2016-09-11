@@ -33,8 +33,6 @@ var GrowlReporter = function(helper, logger, config) {
     types = config.types;
   }
 
-  console.log(types)
-
   var log = logger.create('reporter.growler');
 
   var optionsFor = function(type, browser) {
