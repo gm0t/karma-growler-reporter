@@ -1,6 +1,6 @@
 {
   "name": "karma-growler-reporter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Karma plugin. Report results with growl (https://npmjs.org/package/growl).",
   "main": "index.js",
   "scripts": {
