@@ -25,6 +25,14 @@ var OPTIONS = {
 };
 
 var GrowlReporter = function(helper, logger, config) {
+  var types;
+  if (!config || !config.types) {
+    types = ['failed', 'disconnected', 'error', 'success'];
+  }
+  else {
+    types = config.types;
+  }
+
   var log = logger.create('reporter.growler');
 
   var optionsFor = function(type, browser) {
@@ -40,21 +48,23 @@ var GrowlReporter = function(helper, logger, config) {
     var results = browser.lastResult;
     var time = helper.formatTimeInterval(results.totalTime);
 
-    if (results.disconnected || results.error) {
+    if (results.disconnected && types.indexOf('disconnected') > -1 || results.error && types.indexOf('error') > -1) {
       return growl(MSG_ERROR, optionsFor('error', browser.name));
     }
 
-    if (results.failed) {
+    if (results.failed && types.indexOf('failed') > -1) {
       return growl(
         util.format(MSG_FAILURE, results.failed, results.total, time),
         optionsFor('failed', browser.name)
       );
     }
 
-    growl(
-      util.format(MSG_SUCCESS, results.success, time),
-      optionsFor('success', browser.name)
-    );
+    if (types.indexOf('success') > -1) {
+      growl(
+        util.format(MSG_SUCCESS, results.success, time),
+        optionsFor('success', browser.name)
+      );
+    }
   };
 };
 

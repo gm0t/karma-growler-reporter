@@ -25,11 +25,22 @@ npm install karma-growler-reporter --save-dev
 ###
 
 ## Configuration
+
+You can filter which message types get pushed to growl.
+
 ```js
 // karma.conf.js
 module.exports = function(config) {
   config.set({
     reporters: ['progress', 'growler'],
+    growlerReporter: {
+      types: [
+        'error',
+        'success',
+        'disconnected',
+        'failed'
+      ]
+    },
   });
 };
 ```
